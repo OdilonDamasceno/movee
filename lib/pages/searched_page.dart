@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../constants.dart';
+import 'details_page.dart';
 
 class SearchedPage extends StatelessWidget {
   @override
@@ -93,6 +94,13 @@ class SearchedPage extends StatelessWidget {
             time: '1h55',
             left: 20,
             size: 260,
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(),
+                ),
+              );
+            },
           ),
           buildRow(
             text: 'City bus',
@@ -234,15 +242,15 @@ class SearchedPage extends StatelessWidget {
     );
   }
 
-  Row buildRow({
-    String text,
-    Widget logo,
-    String time,
-    Color color,
-    String price,
-    double left,
-    double size,
-  }) {
+  Row buildRow(
+      {String text,
+      Widget logo,
+      String time,
+      Color color,
+      String price,
+      double left,
+      double size,
+      Function() onTap}) {
     return Row(
       children: <Widget>[
         Container(
@@ -282,47 +290,50 @@ class SearchedPage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 40, left: left),
-                child: Container(
-                  height: 40,
-                  width: size,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: color,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      logo,
-                      Expanded(
-                        child: Text(
-                          '\$$price',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                child: GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    height: 40,
+                    width: size,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: color,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        logo,
+                        Expanded(
+                          child: Text(
+                            '\$$price',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                      ClipPath(
-                        clipper: _ClipPath(),
-                        child: Container(
-                          width: 70,
-                          height: 260,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent.withAlpha(50),
-                          ),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 5),
-                              child: Text(
-                                '$time\'',
-                                style: TextStyle(color: Colors.white),
+                        ClipPath(
+                          clipper: _ClipPath(),
+                          child: Container(
+                            width: 70,
+                            height: 260,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent.withAlpha(50),
+                            ),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 5),
+                                child: Text(
+                                  '$time\'',
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
