@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movee/constants.dart';
 
+import 'searched_page.dart';
+
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -122,7 +124,11 @@ class MainPage extends StatelessWidget {
             child: RaisedButton(
               elevation: 0,
               highlightElevation: 3,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SearchedPage(),
+                ));
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
