@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movee/pages/main_page.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    Orientation _orientation = MediaQuery.of(context).orientation; 
+    Orientation _orientation = MediaQuery.of(context).orientation;
     return Material(
       child: ListView(
         primary: false,
@@ -14,7 +15,9 @@ class LoginPage extends StatelessWidget {
             children: <Widget>[
               Positioned(
                 bottom: 15,
-                left:_orientation == Orientation.landscape? _width * 0.68: _width*0.34,
+                left: _orientation == Orientation.landscape
+                    ? _width * 0.68
+                    : _width * 0.34,
                 child: SizedBox(
                   height: 400,
                   child: Image.asset(
@@ -63,7 +66,11 @@ class LoginPage extends StatelessWidget {
             child: SizedBox(
               height: 60,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => MainPage()),
+                  );
+                },
                 elevation: 0,
                 highlightElevation: 3,
                 shape: RoundedRectangleBorder(
