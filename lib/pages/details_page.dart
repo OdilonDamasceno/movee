@@ -6,12 +6,10 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: ListView(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, bottom: 10, top: 60),
+            padding: EdgeInsets.only(left: 30, right: 30, bottom: 10, top: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -45,9 +43,12 @@ class DetailsPage extends StatelessWidget {
             ),
           ),
           Container(
-            width: 400,
+            alignment: Alignment.center,
             height: 200,
-            child: Image.asset('assets/images/car.png'),
+            child: Image.asset(
+              'assets/images/car.png',
+              fit: BoxFit.contain,
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(left: 50),
