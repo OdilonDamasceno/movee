@@ -84,7 +84,7 @@ class SearchedPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           buildRow(
             text: 'Shared car',
