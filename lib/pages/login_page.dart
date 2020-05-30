@@ -7,9 +7,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     Orientation _orientation = MediaQuery.of(context).orientation;
-    return Material(
-      child: ListView(
-        primary: false,
+    return Scaffold(
+      body: ListView(
         children: <Widget>[
           Stack(
             children: <Widget>[
